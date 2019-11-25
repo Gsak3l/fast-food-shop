@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
 <GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
@@ -27,7 +28,11 @@
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="171.0" prefWidth="476.0">
                            <children>
                               <Text fx:id="epilogiFagitouLabel" layoutX="14.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Επιλέξτε Φαγητό" />
-                              <ListView fx:id="foodList" layoutX="14.0" layoutY="65.0" onMouseClicked="#addText" prefHeight="200.0" prefWidth="200.0" />
+                              <VBox layoutX="16.0" layoutY="64.0" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <ListView fx:id="foodList" prefHeight="200.0" prefWidth="200.0" />
+                                 </children>
+                              </VBox>
                            </children>
                         </AnchorPane>
                   </content>
