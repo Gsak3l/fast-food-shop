@@ -6,10 +6,9 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
@@ -33,7 +32,8 @@ public class Controller {
     private ComboBox drinksComboBox;
     @FXML
     private ListView foodList;
-
+    @FXML
+    private ImageView foodImage;
     @FXML
     void printValue(MouseEvent event) {
         System.out.println(posotitaF.getValue());
@@ -46,5 +46,7 @@ public class Controller {
         posotitaF.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
         drinksComboBox.getItems().addAll(drinks);
         posotitaP.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
+        Image image = new Image("sample/fanta.jpg");
+        foodImage.setImage(image);
     }
 }
