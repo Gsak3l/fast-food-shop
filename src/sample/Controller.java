@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -25,7 +26,7 @@ public class Controller {
             "Γύρος", "Σουβλάκι", "Σουτζουκάκι", "Γεμιστά", "Χωριάτικη", "Πράσινη");
     @FXML
     ObservableList<String> drinks = FXCollections.observableArrayList(
-            "Κόκα Κόλα", "Πορτοκαλάδα", "Λεμονάδα", "Νερό", "Βότκα");
+            "Κόκα Κόλα", "Πορτοκαλάδα", "Λεμονάδα", "Νερό");
     private Image[] availableFoodImages = new Image[6];
     private Image[] availableDrinksImages = new Image[4];
     @FXML
@@ -46,7 +47,8 @@ public class Controller {
 
     @FXML
     void showImage(MouseEvent event) {
-        if (foodList.getSelectionModel().getSelectedItem().equals("Γύρος")) foodImage.setImage(availableFoodImages[0]);
+        if (foodList.getSelectionModel().getSelectedItem().equals("Γύρος"))
+            foodImage.setImage(availableFoodImages[0]);
         else if (foodList.getSelectionModel().getSelectedItem().equals("Σουβλάκι"))
             foodImage.setImage(availableFoodImages[1]);
         else if (foodList.getSelectionModel().getSelectedItem().equals("Σουτζουκάκι"))
@@ -60,8 +62,19 @@ public class Controller {
     }
 
     @FXML
+    void showDrinks(ActionEvent event) {
+        if(drinksComboBox.getSelectionModel().getSelectedItem().equals("Κόκα Κόλα"))
+            drinksImage.setImage(availableDrinksImages[0]);
+        else if(drinksComboBox.getSelectionModel().getSelectedItem().equals("Πορτοκαλάδα"))
+            drinksImage.setImage(availableDrinksImages[1]);
+        else  if(drinksComboBox.getSelectionModel().getSelectedItem().equals("Λεμονάδα"))
+            drinksImage.setImage(availableDrinksImages[2]);
+        else if(drinksComboBox.getSelectionModel().getSelectedItem().equals("Νερό"))
+            drinksImage.setImage(availableDrinksImages[3]);
+    }
+
+    @FXML
     void initialize() {
-        assert foodList != null : "fx:id=\"foodList\" was not injected: check your FXML file 'sample.fxml'.";
         foodList.getItems().addAll(dishes);
         posotitaF.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
         drinksComboBox.getItems().addAll(drinks);

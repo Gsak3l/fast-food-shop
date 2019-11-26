@@ -41,7 +41,7 @@
                               <Label layoutX="297.0" layoutY="33.0" text="Ποσότητα" />
                               <Spinner fx:id="posotitaF" layoutX="297.0" layoutY="58.0" prefHeight="26.0" prefWidth="69.0" />
                               <Button layoutX="17.0" layoutY="436.0" mnemonicParsing="false" onMouseClicked="#printValue" prefWidth="436.0" text="Προσθήκη Προϊόντων " />
-                              <ComboBox fx:id="drinksComboBox" layoutX="14.0" layoutY="302.0" prefHeight="28.0" prefWidth="118.0" />
+                              <ComboBox fx:id="drinksComboBox" layoutX="14.0" layoutY="302.0" onAction="#showDrinks" prefHeight="28.0" prefWidth="118.0" />
                               <Label layoutX="16.0" layoutY="276.0" text="Επιλέξτε Ποτό" />
                               <Label layoutX="297.0" layoutY="276.0" text="Ποσότητα" />
                               <Spinner fx:id="posotitaP" layoutX="297.0" layoutY="302.0" prefHeight="26.0" prefWidth="68.0" />
