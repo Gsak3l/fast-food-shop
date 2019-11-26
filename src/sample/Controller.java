@@ -45,6 +45,21 @@ public class Controller {
     }
 
     @FXML
+    void showImage(MouseEvent event) {
+        if (foodList.getSelectionModel().getSelectedItem().equals("Γύρος")) foodImage.setImage(availableFoodImages[0]);
+        else if (foodList.getSelectionModel().getSelectedItem().equals("Σουβλάκι"))
+            foodImage.setImage(availableFoodImages[1]);
+        else if (foodList.getSelectionModel().getSelectedItem().equals("Σουτζουκάκι"))
+            foodImage.setImage(availableFoodImages[2]);
+        else if (foodList.getSelectionModel().getSelectedItem().equals("Γεμιστά"))
+            foodImage.setImage(availableFoodImages[3]);
+        else if (foodList.getSelectionModel().getSelectedItem().equals("Χωριάτικη"))
+            foodImage.setImage(availableFoodImages[4]);
+        else if (foodList.getSelectionModel().getSelectedItem().equals("Πράσινη"))
+            foodImage.setImage(availableFoodImages[5]);
+    }
+
+    @FXML
     void initialize() {
         assert foodList != null : "fx:id=\"foodList\" was not injected: check your FXML file 'sample.fxml'.";
         foodList.getItems().addAll(dishes);
@@ -52,7 +67,7 @@ public class Controller {
         drinksComboBox.getItems().addAll(drinks);
         posotitaP.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
         availableFoodImages[0] = new Image("sample/gyros.jpg");
-        availableFoodImages[1] = new Image("sample/soutsoukaki.jpg");
+        availableFoodImages[1] = new Image("sample/souvlaki.jpg");
         availableFoodImages[2] = new Image("sample/soutsoukaki.jpg");
         availableFoodImages[3] = new Image("sample/gemista.jpg");
         availableFoodImages[4] = new Image("sample/xoriatiki.jpg");
@@ -61,7 +76,5 @@ public class Controller {
         availableDrinksImages[1] = new Image("sample/portokalada.jpg");
         availableDrinksImages[2] = new Image("sample/lemonada.jpg");
         availableDrinksImages[3] = new Image("sample/nero.jpg");
-        foodImage.setImage(availableFoodImages[0]);
-        drinksImage.setImage(availableDrinksImages[0]);
     }
 }
