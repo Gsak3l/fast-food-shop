@@ -7,6 +7,8 @@
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -40,7 +42,7 @@
                               </VBox>
                               <Label layoutX="297.0" layoutY="33.0" text="Ποσότητα" />
                               <Spinner fx:id="posotitaF" layoutX="297.0" layoutY="58.0" prefHeight="26.0" prefWidth="69.0" />
-                              <Button layoutX="17.0" layoutY="436.0" mnemonicParsing="false" onMouseClicked="#printValue" prefWidth="436.0" text="Προσθήκη Προϊόντων " />
+                              <Button layoutX="17.0" layoutY="436.0" mnemonicParsing="false" onMouseClicked="#addItems" prefWidth="436.0" text="Προσθήκη Προϊόντων " />
                               <ComboBox fx:id="drinksComboBox" layoutX="14.0" layoutY="302.0" onAction="#showDrinks" prefHeight="28.0" prefWidth="118.0" />
                               <Label layoutX="16.0" layoutY="276.0" text="Επιλέξτε Ποτό" />
                               <Label layoutX="297.0" layoutY="276.0" text="Ποσότητα" />
@@ -53,7 +55,16 @@
                 </Tab>
                 <Tab text="ΣΥΝΟΛΙΚΗ ΠΑΡΑΓΓΕΛΙΑ">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView layoutX="27.0" layoutY="18.0" prefHeight="433.0" prefWidth="415.0">
+                                <columns>
+                                  <TableColumn prefWidth="135.0" text="C1" />
+                                  <TableColumn prefWidth="135.0" text="C2" />
+                                    <TableColumn prefWidth="135.0" text="C3" />
+                                </columns>
+                              </TableView>
+                           </children></AnchorPane>
                   </content>
                 </Tab>
               </tabs>

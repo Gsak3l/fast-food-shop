@@ -40,10 +40,20 @@ public class Controller {
     private ImageView foodImage;
     @FXML
     private ImageView drinksImage;
-
     @FXML
-    void printValue(MouseEvent event) {
-        System.out.println(posotitaF.getValue());
+    void addItems(MouseEvent event) {
+        if (foodList.getSelectionModel().getSelectedItem().equals("Γύρος"))
+            System.out.println(Double.parseDouble(posotitaF.getValue().toString())); //this works!! from object to string and from string to double
+        else if (foodList.getSelectionModel().getSelectedItem().equals("Σουβλάκι"))
+            foodImage.setImage(availableFoodImages[1]);
+        else if (foodList.getSelectionModel().getSelectedItem().equals("Σουτζουκάκι"))
+            foodImage.setImage(availableFoodImages[2]);
+        else if (foodList.getSelectionModel().getSelectedItem().equals("Γεμιστά"))
+            foodImage.setImage(availableFoodImages[3]);
+        else if (foodList.getSelectionModel().getSelectedItem().equals("Χωριάτικη"))
+            foodImage.setImage(availableFoodImages[4]);
+        else if (foodList.getSelectionModel().getSelectedItem().equals("Πράσινη"))
+            foodImage.setImage(availableFoodImages[5]);
     }
 
     @FXML
