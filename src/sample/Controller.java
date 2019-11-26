@@ -42,6 +42,7 @@ public class Controller {
     private ImageView drinksImage;
     @FXML
     void addItems(MouseEvent event) {
+        //food price multiplied
         if (foodList.getSelectionModel().getSelectedItem().equals("Γύρος"))
             System.out.println(Double.parseDouble(posotitaF.getValue().toString()) * foodCost[0]); //this works!! from object to string and from string to double
         else if (foodList.getSelectionModel().getSelectedItem().equals("Σουβλάκι"))
@@ -54,6 +55,17 @@ public class Controller {
             System.out.println(Double.parseDouble(posotitaF.getValue().toString()) * foodCost[4]);
         else if (foodList.getSelectionModel().getSelectedItem().equals("Πράσινη"))
             System.out.println(Double.parseDouble(posotitaF.getValue().toString()) * foodCost[5]);
+        //drinks price multiplied
+        if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Κόκα Κόλα"))
+            System.out.println(Double.parseDouble(posotitaP.getValue().toString()) * drinkCost[0]);
+        else if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Πορτοκαλάδα"))
+            System.out.println(Double.parseDouble(posotitaP.getValue().toString()) * drinkCost[1]);
+        else if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Λεμονάδα"))
+            System.out.println(Double.parseDouble(posotitaP.getValue().toString()) * drinkCost[2]);
+        else if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Νερό"))
+            System.out.println(Double.parseDouble(posotitaP.getValue().toString()) * drinkCost[3]);
+        posotitaF.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
+        posotitaP.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
     }
 
     @FXML
