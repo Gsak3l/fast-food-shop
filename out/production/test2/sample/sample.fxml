@@ -57,7 +57,7 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView layoutX="27.0" layoutY="18.0" prefHeight="433.0" prefWidth="415.0">
+                              <TableView fx:id="totalOrder" layoutX="27.0" layoutY="18.0" prefHeight="433.0" prefWidth="415.0">
                                 <columns>
                                   <TableColumn prefWidth="135.0" text="C1" />
                                   <TableColumn prefWidth="135.0" text="C2" />

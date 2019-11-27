@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -20,6 +21,8 @@ public class Controller {
     private Image[] availableDrinksImages = new Image[4];
     @FXML
     private ResourceBundle resources;
+    @FXML
+    private TableView totalOrder;
     @FXML
     private Spinner posotitaF;
     @FXML
@@ -40,6 +43,7 @@ public class Controller {
     private ImageView foodImage;
     @FXML
     private ImageView drinksImage;
+
     @FXML
     void addItems(MouseEvent event) {
         //food price multiplied
@@ -132,5 +136,20 @@ public class Controller {
         drinkCost[1] = 1.00;
         drinkCost[2] = 1.00;
         drinkCost[3] = 0.50;
+        //table rows hopefully
+        TableColumn<String, String> column1 = new TableColumn<>("Προϊόν");
+        column1.setCellValueFactory(new PropertyValueFactory<>("proion"));
+        TableColumn<String, Integer> column2 = new TableColumn<>("Ποσότητα");
+        column2.setCellValueFactory(new PropertyValueFactory<>("posotita"));
+        TableColumn<String, Double> column3 = new TableColumn<>("Κόστος");
+        column1.setCellValueFactory(new PropertyValueFactory<>("kostos"));
+        /*totalOrder.getColumns().add(column1);
+        totalOrder.getColumns().add(column2);
+        totalOrder.getColumns().add(column3);*/
+        totalOrder.getColumns().set(0, column1);
+        totalOrder.getColumns().set(1, column2);
+        totalOrder.getColumns().set(2, column3);
+
+
     }
 }
