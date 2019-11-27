@@ -59,9 +59,9 @@
                            <children>
                               <TableView fx:id="totalOrder" layoutX="27.0" layoutY="18.0" prefHeight="433.0" prefWidth="415.0">
                                 <columns>
-                                  <TableColumn prefWidth="135.0" text="C1" />
-                                  <TableColumn prefWidth="135.0" text="C2" />
-                                    <TableColumn prefWidth="135.0" text="C3" />
+                                  <TableColumn fx:id="Proion" prefWidth="135.0" text="Προϊόν" />
+                                  <TableColumn fx:id="Posotita" prefWidth="135.0" text="Ποσότητα" />
+                                    <TableColumn fx:id="Kostos" prefWidth="135.0" text="Κόστος" />
                                 </columns>
                               </TableView>
                            </children></AnchorPane>

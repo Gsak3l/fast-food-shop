@@ -137,19 +137,18 @@ public class Controller {
         drinkCost[2] = 1.00;
         drinkCost[3] = 0.50;
         //table rows hopefully
-        TableColumn<String, String> column1 = new TableColumn<>("Προϊόν");
-        column1.setCellValueFactory(new PropertyValueFactory<>("proion"));
-        TableColumn<String, Integer> column2 = new TableColumn<>("Ποσότητα");
-        column2.setCellValueFactory(new PropertyValueFactory<>("posotita"));
-        TableColumn<String, Double> column3 = new TableColumn<>("Κόστος");
-        column1.setCellValueFactory(new PropertyValueFactory<>("kostos"));
-        /*totalOrder.getColumns().add(column1);
-        totalOrder.getColumns().add(column2);
-        totalOrder.getColumns().add(column3);*/
-        totalOrder.getColumns().set(0, column1);
-        totalOrder.getColumns().set(1, column2);
-        totalOrder.getColumns().set(2, column3);
+        TableColumn<Paraggelia, String> Proion = null;
+        TableColumn<Paraggelia, Integer> Posotita = null;
+        TableColumn<Paraggelia, Double> Kostos = null;
+        ObservableList<Paraggelia> list = FXCollections.observableArrayList(
+                new Paraggelia("Γύρος", 3, 3.20),
+                new Paraggelia("Γύρος", 3, 3.20)
+                );
+        Proion.setCellValueFactory(new PropertyValueFactory<Paraggelia, String>("Proion"));
+        Posotita.setCellValueFactory(new PropertyValueFactory<Paraggelia, Integer>("Posotita"));
+        Kostos.setCellValueFactory(new PropertyValueFactory<Paraggelia, Double>("Kostos"));
 
+        /*totalOrder.setItems(list);*/
 
     }
 }
