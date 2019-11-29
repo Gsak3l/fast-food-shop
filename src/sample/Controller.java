@@ -147,7 +147,7 @@ public class Controller {
         Proion.setCellValueFactory(new PropertyValueFactory<Paraggelia, String>("Proion"));
         Posotita.setCellValueFactory(new PropertyValueFactory<Paraggelia, Integer>("Posotita"));
         Kostos.setCellValueFactory(new PropertyValueFactory<Paraggelia, Double>("Kostos"));
-        /*totalOrder.setItems(list);*/
-
+        totalOrder.setItems(list);
+        //totalOrder has to be fixed, it doesn't work at all
     }
 }
