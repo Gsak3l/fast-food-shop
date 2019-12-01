@@ -36,6 +36,12 @@ public class Controller {
     @FXML
     private URL location;
     @FXML
+    TableColumn Proion;
+    @FXML
+    TableColumn Posotita;
+    @FXML
+    TableColumn Kostos;
+    @FXML
     private ComboBox drinksComboBox;
     @FXML
     private ListView foodList;
@@ -137,17 +143,16 @@ public class Controller {
         drinkCost[2] = 1.00;
         drinkCost[3] = 0.50;
         //table rows hopefully
-        TableColumn<Paraggelia, String> Proion = null;
-        TableColumn<Paraggelia, Integer> Posotita = null;
-        TableColumn<Paraggelia, Double> Kostos = null;
-        ObservableList<Paraggelia> list = FXCollections.observableArrayList(
-                new Paraggelia("Γύρος", 3, 3.20),
-                new Paraggelia("Γύρος", 3, 3.20)
-                );
-        Proion.setCellValueFactory(new PropertyValueFactory<Paraggelia, String>("Proion"));
-        Posotita.setCellValueFactory(new PropertyValueFactory<Paraggelia, Integer>("Posotita"));
-        Kostos.setCellValueFactory(new PropertyValueFactory<Paraggelia, Double>("Kostos"));
-        totalOrder.setItems(list);
-        //totalOrder has to be fixed, it doesn't work at all
+        //TableColumn Proion = new TableColumn("Προϊόν");
+        Proion.setCellValueFactory(new PropertyValueFactory<>("eidos"));
+        //TableColumn Posotita = new TableColumn("Ποσότητα");
+        Posotita.setCellValueFactory(new PropertyValueFactory<>("posotita"));
+        //TableColumn Kostos = new TableColumn("Κόστος");
+        Kostos.setCellValueFactory(new PropertyValueFactory<>("kostosTemaxiwn"));
+        //totalOrder.getColumns().addAll(Proion, Posotita, Kostos);
+
+        totalOrder.getItems().add(new Paraggelia("Γύρος", 3, 3.20));
+        totalOrder.getItems().add(new Paraggelia("Γύρος", 3, 3.20));
+        totalOrder.getItems().add(new Paraggelia("Γύρος", 3, 3.20));
     }
 }
