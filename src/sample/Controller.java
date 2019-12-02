@@ -144,7 +144,6 @@ public class Controller {
         drinkCost[1] = 1.0;
         drinkCost[2] = 1.0;
         drinkCost[3] = 0.5;
-
         //table rows hopefully
         //TableColumn Proion = new TableColumn("Προϊόν");
         Proion.setCellValueFactory(new PropertyValueFactory<>("eidos"));
