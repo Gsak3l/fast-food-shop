@@ -87,22 +87,39 @@ public class Controller {
             drinksImage.setImage(availableDrinksImages[3]);
     }
     double foodPriceMul() {
-        //food price multiplied
+        //food price multiplied by the number of units
         if (foodList.getSelectionModel().getSelectedItem().equals("Γύρος"))
-            System.out.println(Double.parseDouble(posotitaF.getValue().toString()) * foodCost[0]);
+            return Double.parseDouble(posotitaF.getValue().toString()) * foodCost[0];
         else if (foodList.getSelectionModel().getSelectedItem().equals("Σουβλάκι"))
-            System.out.println(Double.parseDouble(posotitaF.getValue().toString()) * foodCost[1]);
+            return Double.parseDouble(posotitaF.getValue().toString()) * foodCost[1];
         else if (foodList.getSelectionModel().getSelectedItem().equals("Σουτζουκάκι"))
-            System.out.println(Double.parseDouble(posotitaF.getValue().toString()) * foodCost[2]);
+            return Double.parseDouble(posotitaF.getValue().toString()) * foodCost[2];
         else if (foodList.getSelectionModel().getSelectedItem().equals("Γεμιστά"))
-            System.out.println(Double.parseDouble(posotitaF.getValue().toString()) * foodCost[3]);
+            return Double.parseDouble(posotitaF.getValue().toString()) * foodCost[3];
         else if (foodList.getSelectionModel().getSelectedItem().equals("Χωριάτικη"))
-            System.out.println(Double.parseDouble(posotitaF.getValue().toString()) * foodCost[4]);
+            return Double.parseDouble(posotitaF.getValue().toString()) * foodCost[4];
         else if (foodList.getSelectionModel().getSelectedItem().equals("Πράσινη"))
-            System.out.println(Double.parseDouble(posotitaF.getValue().toString()) * foodCost[5]);
+            return Double.parseDouble(posotitaF.getValue().toString()) * foodCost[5];
+        return 0;
+    }
+    double foodCostPerUnit() {
+        //price of each unit for the food section
+        if (foodList.getSelectionModel().getSelectedItem().equals("Γύρος"))
+            return foodCost[0];
+        else if (foodList.getSelectionModel().getSelectedItem().equals("Σουβλάκι"))
+            return foodCost[1];
+        else if (foodList.getSelectionModel().getSelectedItem().equals("Σουτζουκάκι"))
+            return foodCost[2];
+        else if (foodList.getSelectionModel().getSelectedItem().equals("Γεμιστά"))
+            return foodCost[3];
+        else if (foodList.getSelectionModel().getSelectedItem().equals("Χωριάτικη"))
+            return foodCost[4];
+        else if (foodList.getSelectionModel().getSelectedItem().equals("Πράσινη"))
+            return foodCost[5];
         return 0;
     }
     double drinkCostPerUnit() {
+        //price of each unit for the drinks section
         if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Κόκα Κόλα"))
             return drinkCost[0];
         else if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Πορτοκαλάδα"))
@@ -114,25 +131,24 @@ public class Controller {
         return 0;
     }
     double drinksPriceMul() {
-        //drinks price multiplied
-        double cost = 0;
+        //drinks price multiplied by the number of units
         if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Κόκα Κόλα"))
-            cost = Double.parseDouble(posotitaP.getValue().toString()) * drinkCost[0];
+            return Double.parseDouble(posotitaP.getValue().toString()) * drinkCost[0];
         else if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Πορτοκαλάδα"))
-            cost = Double.parseDouble(posotitaP.getValue().toString()) * drinkCost[1];
+            return Double.parseDouble(posotitaP.getValue().toString()) * drinkCost[1];
         else if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Λεμονάδα"))
-            cost = Double.parseDouble(posotitaP.getValue().toString()) * drinkCost[2];
+            return Double.parseDouble(posotitaP.getValue().toString()) * drinkCost[2];
         else if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Νερό"))
-            cost = Double.parseDouble(posotitaP.getValue().toString()) * drinkCost[3];
-        return cost;
+            return Double.parseDouble(posotitaP.getValue().toString()) * drinkCost[3];
+        return 0;
     }
     @FXML
     void addToTable(MouseEvent event) {
-        /*if(foodPriceMul() != 0) {
-
-        }*/
+        if(foodPriceMul() != 0) {
+            totalOrder.getItems().add(new Paraggelia((String) foodList.getSelectionModel().getSelectedItem(),
+                    Integer.parseInt(posotitaF.getValue().toString()), foodCostPerUnit()));
+        }
         if(drinksPriceMul() != 0) {
-            System.out.println("i am here");
             totalOrder.getItems().add(new Paraggelia((String) drinksComboBox.getSelectionModel().getSelectedItem(),
                     Integer.parseInt(posotitaP.getValue().toString()) , drinkCostPerUnit()));
         }
@@ -162,16 +178,16 @@ public class Controller {
         availableDrinksImages[2] = new Image("sample/lemonada.jpg");
         availableDrinksImages[3] = new Image("sample/nero.jpg");
         //initializing cost for food and drinks
-        foodCost[0] = 3.2;
-        foodCost[1] = 3.0;
-        foodCost[2] = 3.3;
-        foodCost[3] = 5.0;
-        foodCost[4] = 4.2;
-        foodCost[5] = 4.0;
-        drinkCost[0] = 1.2;
-        drinkCost[1] = 1.0;
-        drinkCost[2] = 1.0;
-        drinkCost[3] = 0.5;
+        foodCost[0] = 3.20;
+        foodCost[1] = 3.00;
+        foodCost[2] = 3.30;
+        foodCost[3] = 5.00;
+        foodCost[4] = 4.20;
+        foodCost[5] = 4.00;
+        drinkCost[0] = 1.20;
+        drinkCost[1] = 1.00;
+        drinkCost[2] = 1.00;
+        drinkCost[3] = 0.50;
         //table rows hopefully
         //TableColumn Proion = new TableColumn("Προϊόν");
         Proion.setCellValueFactory(new PropertyValueFactory<>("eidos"));
@@ -180,8 +196,5 @@ public class Controller {
         //TableColumn Kostos = new TableColumn("Κόστος");
         Kostos.setCellValueFactory(new PropertyValueFactory<>("kostosTemaxiou"));
         //totalOrder.getColumns().addAll(Proion, Posotita, Kostos);
-
-        totalOrder.getItems().add(new Paraggelia("Γύρος", 3, 3.20));
-
     }
 }
