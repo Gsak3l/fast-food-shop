@@ -20,8 +20,11 @@ public class Controller {
     private double[] drinkCost = new double[4];
     private Image[] availableFoodImages = new Image[6];
     private Image[] availableDrinksImages = new Image[4];
+    DecimalFormat df2 = new DecimalFormat("#.##");
     @FXML
     private ResourceBundle resources;
+    @FXML
+    private Button prosthikiProiontwn;
     @FXML
     private TableView totalOrder;
     @FXML
@@ -51,33 +54,6 @@ public class Controller {
     @FXML
     private ImageView drinksImage;
 
-    @FXML
-    void addItems(MouseEvent event) {
-        //food price multiplied
-        if (foodList.getSelectionModel().getSelectedItem().equals("Γύρος"))
-            System.out.println(Double.parseDouble(posotitaF.getValue().toString()) * foodCost[0]); //this works!! from object to string and from string to double
-        else if (foodList.getSelectionModel().getSelectedItem().equals("Σουβλάκι"))
-            System.out.println(Double.parseDouble(posotitaF.getValue().toString()) * foodCost[1]);
-        else if (foodList.getSelectionModel().getSelectedItem().equals("Σουτζουκάκι"))
-            System.out.println(Double.parseDouble(posotitaF.getValue().toString()) * foodCost[2]);
-        else if (foodList.getSelectionModel().getSelectedItem().equals("Γεμιστά"))
-            System.out.println(Double.parseDouble(posotitaF.getValue().toString()) * foodCost[3]);
-        else if (foodList.getSelectionModel().getSelectedItem().equals("Χωριάτικη"))
-            System.out.println(Double.parseDouble(posotitaF.getValue().toString()) * foodCost[4]);
-        else if (foodList.getSelectionModel().getSelectedItem().equals("Πράσινη"))
-            System.out.println(Double.parseDouble(posotitaF.getValue().toString()) * foodCost[5]);
-        //drinks price multiplied
-        if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Κόκα Κόλα"))
-            System.out.println(Double.parseDouble(posotitaP.getValue().toString()) * drinkCost[0]);
-        else if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Πορτοκαλάδα"))
-            System.out.println(Double.parseDouble(posotitaP.getValue().toString()) * drinkCost[1]);
-        else if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Λεμονάδα"))
-            System.out.println(Double.parseDouble(posotitaP.getValue().toString()) * drinkCost[2]);
-        else if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Νερό"))
-            System.out.println(Double.parseDouble(posotitaP.getValue().toString()) * drinkCost[3]);
-        posotitaF.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
-        posotitaP.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
-    }
 
     @FXML
     void showImage(MouseEvent event) {
@@ -110,6 +86,59 @@ public class Controller {
         else if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Νερό"))
             drinksImage.setImage(availableDrinksImages[3]);
     }
+    double foodPriceMul() {
+        //food price multiplied
+        if (foodList.getSelectionModel().getSelectedItem().equals("Γύρος"))
+            System.out.println(Double.parseDouble(posotitaF.getValue().toString()) * foodCost[0]);
+        else if (foodList.getSelectionModel().getSelectedItem().equals("Σουβλάκι"))
+            System.out.println(Double.parseDouble(posotitaF.getValue().toString()) * foodCost[1]);
+        else if (foodList.getSelectionModel().getSelectedItem().equals("Σουτζουκάκι"))
+            System.out.println(Double.parseDouble(posotitaF.getValue().toString()) * foodCost[2]);
+        else if (foodList.getSelectionModel().getSelectedItem().equals("Γεμιστά"))
+            System.out.println(Double.parseDouble(posotitaF.getValue().toString()) * foodCost[3]);
+        else if (foodList.getSelectionModel().getSelectedItem().equals("Χωριάτικη"))
+            System.out.println(Double.parseDouble(posotitaF.getValue().toString()) * foodCost[4]);
+        else if (foodList.getSelectionModel().getSelectedItem().equals("Πράσινη"))
+            System.out.println(Double.parseDouble(posotitaF.getValue().toString()) * foodCost[5]);
+        return 0;
+    }
+    double drinkCostPerUnit() {
+        if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Κόκα Κόλα"))
+            return drinkCost[0];
+        else if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Πορτοκαλάδα"))
+            return drinkCost[1];
+        else if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Λεμονάδα"))
+            return drinkCost[2];
+        else if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Νερό"))
+            return drinkCost[3];
+        return 0;
+    }
+    double drinksPriceMul() {
+        //drinks price multiplied
+        double cost = 0;
+        if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Κόκα Κόλα"))
+            cost = Double.parseDouble(posotitaP.getValue().toString()) * drinkCost[0];
+        else if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Πορτοκαλάδα"))
+            cost = Double.parseDouble(posotitaP.getValue().toString()) * drinkCost[1];
+        else if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Λεμονάδα"))
+            cost = Double.parseDouble(posotitaP.getValue().toString()) * drinkCost[2];
+        else if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Νερό"))
+            cost = Double.parseDouble(posotitaP.getValue().toString()) * drinkCost[3];
+        return cost;
+    }
+    @FXML
+    void addToTable(MouseEvent event) {
+        /*if(foodPriceMul() != 0) {
+
+        }*/
+        if(drinksPriceMul() != 0) {
+            System.out.println("i am here");
+            totalOrder.getItems().add(new Paraggelia((String) drinksComboBox.getSelectionModel().getSelectedItem(),
+                    Integer.parseInt(posotitaP.getValue().toString()) , drinkCostPerUnit()));
+        }
+        posotitaF.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
+        posotitaP.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
+    }
 
     @FXML
     void initialize() {
@@ -133,7 +162,6 @@ public class Controller {
         availableDrinksImages[2] = new Image("sample/lemonada.jpg");
         availableDrinksImages[3] = new Image("sample/nero.jpg");
         //initializing cost for food and drinks
-        DecimalFormat df2 = new DecimalFormat("#.##");
         foodCost[0] = 3.2;
         foodCost[1] = 3.0;
         foodCost[2] = 3.3;
@@ -154,7 +182,6 @@ public class Controller {
         //totalOrder.getColumns().addAll(Proion, Posotita, Kostos);
 
         totalOrder.getItems().add(new Paraggelia("Γύρος", 3, 3.20));
-        totalOrder.getItems().add(new Paraggelia("Γύρος", 3, 3.20));
-        totalOrder.getItems().add(new Paraggelia("Γύρος", 3, 3.20));
+
     }
 }
