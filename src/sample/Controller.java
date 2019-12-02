@@ -1,6 +1,7 @@
 package sample;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -132,23 +133,25 @@ public class Controller {
         availableDrinksImages[2] = new Image("sample/lemonada.jpg");
         availableDrinksImages[3] = new Image("sample/nero.jpg");
         //initializing cost for food and drinks
-        foodCost[0] = 3.20;
-        foodCost[1] = 3.00;
-        foodCost[2] = 3.30;
-        foodCost[3] = 5.00;
-        foodCost[4] = 4.20;
-        foodCost[5] = 4.00;
-        drinkCost[0] = 1.20;
-        drinkCost[1] = 1.00;
-        drinkCost[2] = 1.00;
-        drinkCost[3] = 0.50;
+        DecimalFormat df2 = new DecimalFormat("#.##");
+        foodCost[0] = 3.2;
+        foodCost[1] = 3.0;
+        foodCost[2] = 3.3;
+        foodCost[3] = 5.0;
+        foodCost[4] = 4.2;
+        foodCost[5] = 4.0;
+        drinkCost[0] = 1.2;
+        drinkCost[1] = 1.0;
+        drinkCost[2] = 1.0;
+        drinkCost[3] = 0.5;
+
         //table rows hopefully
         //TableColumn Proion = new TableColumn("Προϊόν");
         Proion.setCellValueFactory(new PropertyValueFactory<>("eidos"));
         //TableColumn Posotita = new TableColumn("Ποσότητα");
         Posotita.setCellValueFactory(new PropertyValueFactory<>("posotita"));
         //TableColumn Kostos = new TableColumn("Κόστος");
-        Kostos.setCellValueFactory(new PropertyValueFactory<>("kostosTemaxiwn"));
+        Kostos.setCellValueFactory(new PropertyValueFactory<>("kostosTemaxiou"));
         //totalOrder.getColumns().addAll(Proion, Posotita, Kostos);
 
         totalOrder.getItems().add(new Paraggelia("Γύρος", 3, 3.20));
