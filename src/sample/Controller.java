@@ -16,6 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 public class Controller {
+    public double totalOrderCost = 0;
     private double[] foodCost = new double[6];
     private double[] drinkCost = new double[4];
     private Image[] availableFoodImages = new Image[6];
@@ -38,9 +39,9 @@ public class Controller {
     ObservableList<String> drinks = FXCollections.observableArrayList(
             "Κόκα Κόλα", "Πορτοκαλάδα", "Λεμονάδα", "Νερό");
     @FXML
-    private URL location;
-    @FXML
     TableColumn Proion;
+    @FXML
+    TextField synolikoKostos;
     @FXML
     TableColumn Posotita;
     @FXML
@@ -86,6 +87,7 @@ public class Controller {
         else if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Νερό"))
             drinksImage.setImage(availableDrinksImages[3]);
     }
+
     double foodPriceMul() {
         //food price multiplied by the number of units
         if (foodList.getSelectionModel().getSelectedItem().equals("Γύρος"))
@@ -102,6 +104,7 @@ public class Controller {
             return Double.parseDouble(posotitaF.getValue().toString()) * foodCost[5];
         return 0;
     }
+
     double foodCostPerUnit() {
         //price of each unit for the food section
         if (foodList.getSelectionModel().getSelectedItem().equals("Γύρος"))
@@ -118,6 +121,7 @@ public class Controller {
             return foodCost[5];
         return 0;
     }
+
     double drinkCostPerUnit() {
         //price of each unit for the drinks section
         if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Κόκα Κόλα"))
@@ -130,6 +134,7 @@ public class Controller {
             return drinkCost[3];
         return 0;
     }
+
     double drinksPriceMul() {
         //drinks price multiplied by the number of units
         if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Κόκα Κόλα"))
@@ -142,18 +147,22 @@ public class Controller {
             return Double.parseDouble(posotitaP.getValue().toString()) * drinkCost[3];
         return 0;
     }
+
     @FXML
     void addToTable(MouseEvent event) {
-        if(foodPriceMul() != 0) {
+        if (foodPriceMul() != 0) {
             totalOrder.getItems().add(new Paraggelia((String) foodList.getSelectionModel().getSelectedItem(),
                     Integer.parseInt(posotitaF.getValue().toString()), foodCostPerUnit()));
+            totalOrderCost += foodPriceMul();
         }
-        if(drinksPriceMul() != 0) {
+        if (drinksPriceMul() != 0) {
             totalOrder.getItems().add(new Paraggelia((String) drinksComboBox.getSelectionModel().getSelectedItem(),
-                    Integer.parseInt(posotitaP.getValue().toString()) , drinkCostPerUnit()));
+                    Integer.parseInt(posotitaP.getValue().toString()), drinkCostPerUnit()));
+            totalOrderCost += drinksPriceMul();
         }
         posotitaF.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
         posotitaP.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
+        synolikoKostos.setText("Συνολικό Κόστος: " + df2.format(totalOrderCost) + "€"); //decimal format
     }
 
     @FXML
