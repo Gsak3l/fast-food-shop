@@ -151,6 +151,7 @@ public class Controller {
 
         if (foodList.getSelectionModel().getSelectedItem() != null) {
             if (foodPriceMul() != 0) {
+                //adding new rows on the table
                 totalOrder.getItems().add(new Paraggelia((String) foodList.getSelectionModel().getSelectedItem(),
                         Integer.parseInt(posotitaF.getValue().toString()), foodCostPerUnit()));
                 totalOrderCost += foodPriceMul();
@@ -158,6 +159,7 @@ public class Controller {
         }
         if (drinksComboBox.getSelectionModel().getSelectedItem() != null) {
             if (drinksPriceMul() != 0) {
+                //adding new rows on the table
                 totalOrder.getItems().add(new Paraggelia((String) drinksComboBox.getSelectionModel().getSelectedItem(),
                         Integer.parseInt(posotitaP.getValue().toString()), drinkCostPerUnit()));
                 totalOrderCost += drinksPriceMul();
@@ -200,13 +202,9 @@ public class Controller {
         drinkCost[1] = 1.00;
         drinkCost[2] = 1.00;
         drinkCost[3] = 0.50;
-        //table rows hopefully
-        //TableColumn Proion = new TableColumn("Προϊόν");
+        //table rows
         Proion.setCellValueFactory(new PropertyValueFactory<>("eidos"));
-        //TableColumn Posotita = new TableColumn("Ποσότητα");
         Posotita.setCellValueFactory(new PropertyValueFactory<>("posotita"));
-        //TableColumn Kostos = new TableColumn("Κόστος");
         Kostos.setCellValueFactory(new PropertyValueFactory<>("kostosTemaxiou"));
-        //totalOrder.getColumns().addAll(Proion, Posotita, Kostos);
     }
 }
