@@ -1,6 +1,5 @@
 package sample;
 
-import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
@@ -13,7 +12,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Text;
 
 public class Controller {
     public double totalOrderCost = 0;
