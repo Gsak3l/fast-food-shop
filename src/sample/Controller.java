@@ -150,15 +150,20 @@ public class Controller {
 
     @FXML
     void addToTable(MouseEvent event) {
-        if (foodPriceMul() != 0) {
-            totalOrder.getItems().add(new Paraggelia((String) foodList.getSelectionModel().getSelectedItem(),
-                    Integer.parseInt(posotitaF.getValue().toString()), foodCostPerUnit()));
-            totalOrderCost += foodPriceMul();
+
+        if (foodList.getSelectionModel().getSelectedItem() != null) {
+            if (foodPriceMul() != 0) {
+                totalOrder.getItems().add(new Paraggelia((String) foodList.getSelectionModel().getSelectedItem(),
+                        Integer.parseInt(posotitaF.getValue().toString()), foodCostPerUnit()));
+                totalOrderCost += foodPriceMul();
+            }
         }
-        if (drinksPriceMul() != 0) {
-            totalOrder.getItems().add(new Paraggelia((String) drinksComboBox.getSelectionModel().getSelectedItem(),
-                    Integer.parseInt(posotitaP.getValue().toString()), drinkCostPerUnit()));
-            totalOrderCost += drinksPriceMul();
+        if (drinksComboBox.getSelectionModel().getSelectedItem() != null) {
+            if (drinksPriceMul() != 0) {
+                totalOrder.getItems().add(new Paraggelia((String) drinksComboBox.getSelectionModel().getSelectedItem(),
+                        Integer.parseInt(posotitaP.getValue().toString()), drinkCostPerUnit()));
+                totalOrderCost += drinksPriceMul();
+            }
         }
         posotitaF.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
         posotitaP.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
