@@ -14,12 +14,12 @@ import javafx.scene.input.MouseEvent;
 
 public class Controller {
     //my variables
-    public double totalOrderCost = 0;
+    private double totalOrderCost = 0;
     private double[] foodCost = new double[6];
     private double[] drinkCost = new double[4];
     private Image[] availableFoodImages = new Image[6];
     private Image[] availableDrinksImages = new Image[4];
-    DecimalFormat df2 = new DecimalFormat("#.##");
+    private DecimalFormat df2 = new DecimalFormat("#.##");
     //FXML variables
     @FXML
     private TableView totalOrder;
