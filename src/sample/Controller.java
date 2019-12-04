@@ -1,7 +1,6 @@
 package sample;
 
 import java.text.DecimalFormat;
-import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,16 +13,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 public class Controller {
+    //my variables
     public double totalOrderCost = 0;
     private double[] foodCost = new double[6];
     private double[] drinkCost = new double[4];
     private Image[] availableFoodImages = new Image[6];
     private Image[] availableDrinksImages = new Image[4];
     DecimalFormat df2 = new DecimalFormat("#.##");
-    @FXML
-    private ResourceBundle resources;
-    @FXML
-    private Button prosthikiProiontwn;
+    //FXML variables
     @FXML
     private TableView totalOrder;
     @FXML
@@ -31,19 +28,19 @@ public class Controller {
     @FXML
     private Spinner posotitaP;
     @FXML
-    ObservableList<String> dishes = FXCollections.observableArrayList(
+    private ObservableList<String> dishes = FXCollections.observableArrayList(
             "Γύρος", "Σουβλάκι", "Σουτζουκάκι", "Γεμιστά", "Χωριάτικη", "Πράσινη");
     @FXML
-    ObservableList<String> drinks = FXCollections.observableArrayList(
+    private ObservableList<String> drinks = FXCollections.observableArrayList(
             "Κόκα Κόλα", "Πορτοκαλάδα", "Λεμονάδα", "Νερό");
     @FXML
     TableColumn Proion;
     @FXML
-    TextField synolikoKostos;
-    @FXML
     TableColumn Posotita;
     @FXML
     TableColumn Kostos;
+    @FXML
+    TextField synolikoKostos;
     @FXML
     private ComboBox drinksComboBox;
     @FXML
