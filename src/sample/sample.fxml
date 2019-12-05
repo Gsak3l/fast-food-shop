@@ -19,6 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
+
 <GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1"
           xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <Pane prefHeight="568.0" prefWidth="469.0">
@@ -29,12 +30,12 @@
                         <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="171.0" prefWidth="476.0">
                                 <children>
-                                    <Text fx:id="epilogiFagitouLabel" layoutX="14.0" layoutY="47.0"
-                                          strokeType="OUTSIDE" strokeWidth="0.0" text="Επιλέξτε Φαγητό"/>
+                                    <Text fx:id="epilogiFagitouLabel" layoutX="14.0" layoutY="47.0" strokeType="OUTSIDE"
+                                          strokeWidth="0.0" text="Επιλέξτε Φαγητό"/>
                                     <VBox layoutX="16.0" layoutY="64.0" prefHeight="127.0" prefWidth="120.0">
                                         <children>
-                                            <ListView fx:id="foodList" onMouseClicked="#showFood"
-                                                      prefHeight="199.0" prefWidth="120.0"/>
+                                            <ListView fx:id="foodList" onMouseClicked="#showFood" prefHeight="199.0"
+                                                      prefWidth="120.0"/>
                                         </children>
                                     </VBox>
                                     <Label layoutX="297.0" layoutY="33.0" text="Ποσότητα"/>
@@ -51,9 +52,8 @@
                                              prefWidth="68.0"/>
                                     <ImageView fx:id="foodImage" fitHeight="113.0" fitWidth="144.0" layoutX="147.0"
                                                layoutY="64.0" pickOnBounds="true" preserveRatio="true"/>
-                                    <ImageView fx:id="drinksImage" fitHeight="113.0" fitWidth="144.0"
-                                               layoutX="147.0" layoutY="302.0" pickOnBounds="true"
-                                               preserveRatio="true"/>
+                                    <ImageView fx:id="drinksImage" fitHeight="113.0" fitWidth="144.0" layoutX="147.0"
+                                               layoutY="302.0" pickOnBounds="true" preserveRatio="true"/>
                                 </children>
                             </AnchorPane>
                         </content>
@@ -83,4 +83,10 @@
             </TabPane>
         </children>
     </Pane>
+    <columnConstraints>
+        <ColumnConstraints/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints/>
+    </rowConstraints>
 </GridPane>
