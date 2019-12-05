@@ -33,7 +33,7 @@
                                           strokeType="OUTSIDE" strokeWidth="0.0" text="Επιλέξτε Φαγητό"/>
                                     <VBox layoutX="16.0" layoutY="64.0" prefHeight="127.0" prefWidth="120.0">
                                         <children>
-                                            <ListView fx:id="foodList" onMouseClicked="#showImage"
+                                            <ListView fx:id="foodList" onMouseClicked="#showFood"
                                                       prefHeight="199.0" prefWidth="120.0"/>
                                         </children>
                                     </VBox>

@@ -52,7 +52,7 @@ public class Controller {
 
 
     @FXML
-    void showImage(MouseEvent event) {
+    void showFood(MouseEvent event) {
         //onclick action for the listview
         //show image on click event
         if (foodList.getSelectionModel().getSelectedItem().equals("Γύρος"))
@@ -83,24 +83,7 @@ public class Controller {
             drinksImage.setImage(availableDrinksImages[3]);
     }
 
-    double foodPriceMul() {
-        //food price multiplied by the number of units
-        if (foodList.getSelectionModel().getSelectedItem().equals("Γύρος"))
-            return Double.parseDouble(posotitaF.getValue().toString()) * foodCost[0];
-        else if (foodList.getSelectionModel().getSelectedItem().equals("Σουβλάκι"))
-            return Double.parseDouble(posotitaF.getValue().toString()) * foodCost[1];
-        else if (foodList.getSelectionModel().getSelectedItem().equals("Σουτζουκάκι"))
-            return Double.parseDouble(posotitaF.getValue().toString()) * foodCost[2];
-        else if (foodList.getSelectionModel().getSelectedItem().equals("Γεμιστά"))
-            return Double.parseDouble(posotitaF.getValue().toString()) * foodCost[3];
-        else if (foodList.getSelectionModel().getSelectedItem().equals("Χωριάτικη"))
-            return Double.parseDouble(posotitaF.getValue().toString()) * foodCost[4];
-        else if (foodList.getSelectionModel().getSelectedItem().equals("Πράσινη"))
-            return Double.parseDouble(posotitaF.getValue().toString()) * foodCost[5];
-        return 0;
-    }
-
-    double foodCostPerUnit() {
+    private double foodCostPerUnit() {
         //price of each unit for the food section
         if (foodList.getSelectionModel().getSelectedItem().equals("Γύρος"))
             return foodCost[0];
@@ -117,7 +100,7 @@ public class Controller {
         return 0;
     }
 
-    double drinkCostPerUnit() {
+    private double drinkCostPerUnit() {
         //price of each unit for the drinks section
         if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Κόκα Κόλα"))
             return drinkCost[0];
@@ -130,7 +113,24 @@ public class Controller {
         return 0;
     }
 
-    double drinksPriceMul() {
+    private double foodPriceMul() {
+        //food price multiplied by the number of units
+        if (foodList.getSelectionModel().getSelectedItem().equals("Γύρος"))
+            return Double.parseDouble(posotitaF.getValue().toString()) * foodCost[0];
+        else if (foodList.getSelectionModel().getSelectedItem().equals("Σουβλάκι"))
+            return Double.parseDouble(posotitaF.getValue().toString()) * foodCost[1];
+        else if (foodList.getSelectionModel().getSelectedItem().equals("Σουτζουκάκι"))
+            return Double.parseDouble(posotitaF.getValue().toString()) * foodCost[2];
+        else if (foodList.getSelectionModel().getSelectedItem().equals("Γεμιστά"))
+            return Double.parseDouble(posotitaF.getValue().toString()) * foodCost[3];
+        else if (foodList.getSelectionModel().getSelectedItem().equals("Χωριάτικη"))
+            return Double.parseDouble(posotitaF.getValue().toString()) * foodCost[4];
+        else if (foodList.getSelectionModel().getSelectedItem().equals("Πράσινη"))
+            return Double.parseDouble(posotitaF.getValue().toString()) * foodCost[5];
+        return 0;
+    }
+
+    private double drinksPriceMul() {
         //drinks price multiplied by the number of units
         if (drinksComboBox.getSelectionModel().getSelectedItem().equals("Κόκα Κόλα"))
             return Double.parseDouble(posotitaP.getValue().toString()) * drinkCost[0];
@@ -145,7 +145,7 @@ public class Controller {
 
     @FXML
     void addToTable(MouseEvent event) {
-
+        //onClick function, fx:id prosthikiProiontwn
         if (foodList.getSelectionModel().getSelectedItem() != null) {
             if (foodPriceMul() != 0) {
                 //adding new rows on the table
